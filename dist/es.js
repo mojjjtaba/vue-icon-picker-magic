@@ -1,21 +1,26 @@
-import { openBlock as s, createElementBlock as _, renderSlot as r } from "vue";
-const u = (t, e) => {
-  const o = t.__vccOpts || t;
-  for (const [n, c] of e)
-    o[n] = c;
-  return o;
+import { openBlock as _, createElementBlock as r, renderSlot as d } from "vue";
+const i = (t, o) => {
+  const e = t.__vccOpts || t;
+  for (const [s, u] of o)
+    e[s] = u;
+  return e;
 }, l = {};
-function a(t, e) {
-  return s(), _("button", null, [
-    r(t.$slots, "default", {}, void 0, !0)
+function f(t, o) {
+  return _(), r("button", null, [
+    d(t.$slots, "default", {}, void 0, !0)
   ]);
 }
-const d = /* @__PURE__ */ u(l, [["render", a], ["__scopeId", "data-v-c792b957"]]), f = {
-  install: (t, e) => {
-    t.component("CustomButton", d);
-  }
+const n = /* @__PURE__ */ i(l, [["render", f], ["__scopeId", "data-v-c792b957"]]), c = function(t) {
+  t.component("CustomButton", n);
+};
+typeof window < "u" && window.Vue && c(window.Vue);
+const p = {
+  version: "0.0.7",
+  install: c,
+  CustomButton: n,
+  customButton: n
 };
 export {
-  d as CustomButton,
-  f as default
+  n as CustomButton,
+  p as default
 };
