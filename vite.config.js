@@ -9,7 +9,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
       name: "custom-button",
-      fileName: (format) => `custom-button.${format}.js`
+      fileName: (format) => `${format}.js`
     },
     rollupOptions: {
       external: ["vue"],
