@@ -5,3 +5,5 @@ export default {
     app.component("CustomButton", CustomButton);
   }
 };
+
+export { CustomButton }

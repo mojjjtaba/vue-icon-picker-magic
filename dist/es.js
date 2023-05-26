@@ -16,5 +16,6 @@ const d = /* @__PURE__ */ u(l, [["render", a], ["__scopeId", "data-v-c792b957"]]
   }
 };
 export {
+  d as CustomButton,
   f as default
 };
