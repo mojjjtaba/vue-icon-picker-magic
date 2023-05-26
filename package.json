@@ -1,12 +1,12 @@
 {
   "name": "vue-icon-picker-magic-test",
-  "version": "0.0.0",
-  "main": "./dist/custom-button.umd.js",
-  "module": "./dist/custom-button.es.js",
+  "version": "0.0.3",
+  "main": "./dist/umd.js",
+  "module": "./dist/es.js",
   "exports": {
     ".": {
-      "import": "./dist/custom-button.es.js",
-      "require": "./dist/custom-button.umd.js"
+      "import": "./dist/es.js",
+      "require": "./dist/umd.js"
     },
     "./dist/style.css": "./dist/style.css"
   },
