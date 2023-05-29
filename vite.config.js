@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
-      name: "custom-button",
+      name: "icon-picker-magic",
       fileName: (format) => `${format}.js`
     },
     rollupOptions: {

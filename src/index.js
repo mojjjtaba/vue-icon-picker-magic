@@ -1,4 +1,4 @@
-import CustomButton from "./components/CustomButton.vue";
+import IconPickerMagic from "./components/IconPickerMagic.vue";
 
 // export default {
 //   install: (app, options) => {
@@ -7,7 +7,7 @@ import CustomButton from "./components/CustomButton.vue";
 // };
 
 const install = function(Vue) {
-  Vue.component('CustomButton', CustomButton);
+  Vue.component('IconPickerMagic', IconPickerMagic);
 }
 
 /* istanbul ignore if */
@@ -15,11 +15,11 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-export { CustomButton }
+export { IconPickerMagic }
 
 export default {
   version: '0.0.7',
   install,
-  CustomButton,
-  customButton: CustomButton
+  IconPickerMagic,
+  // customButton: IconPickerMagic
 }
