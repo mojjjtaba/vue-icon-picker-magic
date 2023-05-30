@@ -1,28 +1,40 @@
-import { openBlock as i, createElementBlock as d, createStaticVNode as r } from "vue";
-const _ = (e, c) => {
-  const t = e.__vccOpts || e;
-  for (const [a, n] of c)
-    t[a] = n;
-  return t;
-}, l = { class: "icon-picker-magic" }, p = /* @__PURE__ */ r('<div class="wrap" data-v-1d4fd200><section class="search" data-v-1d4fd200><input type="search" data-v-1d4fd200></section><section class="icon-list" data-v-1d4fd200><i class="las la-battery-three-quarters" data-v-1d4fd200></i><i class="las la-battery-three-quarters" data-v-1d4fd200></i></section></div>', 1), f = [
-  p
-], u = {
+import { openBlock as t, createElementBlock as s, createElementVNode as c, Fragment as l, renderList as p, pushScopeId as u, popScopeId as h } from "vue";
+const f = (e, n) => {
+  const o = e.__vccOpts || e;
+  for (const [i, r] of n)
+    o[i] = r;
+  return o;
+}, _ = (e) => (u("data-v-697e52f9"), e = e(), h(), e), m = { class: "icon-picker-magic" }, g = { class: "wrap" }, v = /* @__PURE__ */ _(() => /* @__PURE__ */ c("section", { class: "search" }, [
+  /* @__PURE__ */ c("input", {
+    type: "search",
+    placeholder: "Search icon ..."
+  })
+], -1)), w = { class: "icon-list" }, k = { class: "icon-item" }, y = /* @__PURE__ */ _(() => /* @__PURE__ */ c("i", { class: "las la-battery-three-quarters" }, null, -1)), I = [
+  y
+], x = {
   __name: "IconPickerMagic",
   props: {},
   setup(e) {
-    return console.log(document.styleSheets), (c, t) => (i(), d("section", l, f));
+    return console.log(document.styleSheets), (n, o) => (t(), s("section", m, [
+      c("div", g, [
+        v,
+        c("section", w, [
+          (t(!0), s(l, null, p(new Array(100), (i, r) => (t(), s("div", k, I))), 256))
+        ])
+      ])
+    ]));
   }
-}, s = /* @__PURE__ */ _(u, [["__scopeId", "data-v-1d4fd200"]]), o = function(e) {
-  e.component("IconPickerMagic", s);
+}, a = /* @__PURE__ */ f(x, [["__scopeId", "data-v-697e52f9"]]), d = function(e) {
+  e.component("IconPickerMagic", a);
 };
-typeof window < "u" && window.Vue && o(window.Vue);
-const h = {
+typeof window < "u" && window.Vue && d(window.Vue);
+const M = {
   version: "0.0.7",
-  install: o,
-  IconPickerMagic: s
+  install: d,
+  IconPickerMagic: a
   // customButton: IconPickerMagic
 };
 export {
-  s as IconPickerMagic,
-  h as default
+  a as IconPickerMagic,
+  M as default
 };
