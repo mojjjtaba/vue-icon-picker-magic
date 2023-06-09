@@ -4,10 +4,15 @@
       <section class="search">
         <input type="search" placeholder="Search icon ...">
       </section>
+      <section class="select-font-icon">
+        <select v-for="(icon, index) in fontIcons">
+          <option :value="index" v-text="index"></option>
+        </select>
+      </section>
       <section class="icon-list">
         <div class="wrapper">
-          <template v-for="(icon, index) in iconNames">
-            <div class="icon-item" v-if="index < 10">
+          <template v-for="(icon, index) in fontIcons[activeFontIcon].icons">
+            <div class="icon-item">
               <!--          <i class="las la-battery-three-quarters"></i>-->
               <i :class="`fa-solid ${icon}`"></i>
             </div>
@@ -20,43 +25,18 @@
 
 <script setup>
 import {ref} from "vue";
+import {useIcons} from "../composables/icons";
 
-defineProps({})
-
-const iconNames = ref([]);
-
-
-// Function to fetch CSS file
-function fetchCSS(url) {
-  return fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Failed to fetch ${url}`);
-        }
-        return response.text();
-      });
-}
-
-// Function to extract icon names using regex
-function extractIconNames(cssContent) {
-  const regex = /\.fa-[a-z0-9\-]+::before/g;
-  const iconNames = [];
-  let match;
-  while ((match = regex.exec(cssContent)) !== null) {
-    iconNames.push(match[0].slice(1, -8));
+defineProps({
+  activeFontIcon: {
+    default: 'fontawesome',
+    type: String
   }
-  return iconNames;
-}
+})
 
-// Fetch Font Awesome CSS and extract icon names
-fetchCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css')
-    .then((cssContent) => {
-      iconNames.value = extractIconNames(cssContent);
-      console.log(iconNames);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+const fontIcons = useIcons();
+console.log(fontIcons)
+
 </script>
 
 <style lang="scss" scoped>
@@ -88,6 +68,22 @@ fetchCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css'
           background: rgba(0, 0, 0, .03);
           border: 1px solid #ccc;
         }
+      }
+    }
+
+    .select-font-icon {
+      margin-bottom: 12px;
+
+      select {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 42px;
+        font-size: 16px;
+        outline: none;
+        border-radius: 6px;
+        border: 1px solid #aaa;
+        padding: 10px;
       }
     }
 
