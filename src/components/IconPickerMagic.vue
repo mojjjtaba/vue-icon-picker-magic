@@ -5,9 +5,13 @@
         <input type="search" placeholder="Search icon ...">
       </section>
       <section class="icon-list">
-        <div class="icon-item" v-for="(icon, index) in iconNames">
-<!--          <i class="las la-battery-three-quarters"></i>-->
-          <i :class="`fa-solid ${icon}`"></i>
+        <div class="wrapper">
+          <template v-for="(icon, index) in iconNames">
+            <div class="icon-item" v-if="index < 10">
+              <!--          <i class="las la-battery-three-quarters"></i>-->
+              <i :class="`fa-solid ${icon}`"></i>
+            </div>
+          </template>
         </div>
       </section>
     </div>
@@ -15,11 +19,9 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import {ref} from "vue";
 
-defineProps({
-
-})
+defineProps({})
 
 const iconNames = ref([]);
 
@@ -65,8 +67,8 @@ fetchCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css'
   .wrap {
     background: #ffffff;
     padding: 24px;
-    border: 1px solid rgba(0,0,0,.07);
-    box-shadow: 0 0 3px 1px rgba(0,0,0,.07);
+    border: 1px solid rgba(0, 0, 0, .07);
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, .07);
     border-radius: 6px;
     max-width: 300px;
 
@@ -83,26 +85,30 @@ fetchCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css'
         transition: all 0.3s;
 
         &:focus {
-          background: rgba(0,0,0,.03);
+          background: rgba(0, 0, 0, .03);
           border: 1px solid #ccc;
         }
       }
     }
 
     .icon-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
       text-align: left;
       //margin-right: -4px;
       margin-left: -4px;
       height: 300px;
       overflow-y: scroll;
 
+      .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
       /* width */
       &::-webkit-scrollbar {
         width: 3px;
       }
+
       /* Track */
       &::-webkit-scrollbar-track {
         background: #f1f1f1;
@@ -125,14 +131,14 @@ fetchCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css'
         width: 24px;
         height: 24px;
         margin: 4px;
-        border: 1px solid rgba(0,0,0,.12);
+        border: 1px solid rgba(0, 0, 0, .12);
         padding: 8px;
         border-radius: 6px;
         cursor: pointer;
         transition: all 0.3s;
 
         &:hover {
-          background: rgba(0,0,0,.08);
+          background: rgba(0, 0, 0, .08);
         }
 
         i {

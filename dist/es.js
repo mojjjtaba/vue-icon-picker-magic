@@ -1,61 +1,68 @@
-import { ref as u, openBlock as l, createElementBlock as _, createElementVNode as n, Fragment as f, renderList as h, normalizeClass as m, pushScopeId as w, popScopeId as g } from "vue";
-const v = (c, o) => {
+import { ref as h, openBlock as r, createElementBlock as l, createElementVNode as o, Fragment as d, renderList as f, normalizeClass as m, createCommentVNode as w, pushScopeId as v, popScopeId as g } from "vue";
+const k = (c, t) => {
   const s = c.__vccOpts || c;
-  for (const [i, e] of o)
-    s[i] = e;
+  for (const [_, e] of t)
+    s[_] = e;
   return s;
-}, x = (c) => (w("data-v-fa4b5b18"), c = c(), g(), c), k = { class: "icon-picker-magic" }, I = { class: "wrap" }, b = /* @__PURE__ */ x(() => /* @__PURE__ */ n("section", { class: "search" }, [
-  /* @__PURE__ */ n("input", {
+}, x = (c) => (v("data-v-08858931"), c = c(), g(), c), I = { class: "icon-picker-magic" }, y = { class: "wrap" }, S = /* @__PURE__ */ x(() => /* @__PURE__ */ o("section", { class: "search" }, [
+  /* @__PURE__ */ o("input", {
     type: "search",
     placeholder: "Search icon ..."
   })
-], -1)), S = { class: "icon-list" }, y = { class: "icon-item" }, M = {
+], -1)), N = { class: "icon-list" }, M = { class: "wrapper" }, P = {
+  key: 0,
+  class: "icon-item"
+}, V = {
   __name: "IconPickerMagic",
   props: {},
   setup(c) {
-    const o = u([]);
+    const t = h([]);
     function s(e) {
-      return fetch(e).then((t) => {
-        if (!t.ok)
+      return fetch(e).then((n) => {
+        if (!n.ok)
           throw new Error(`Failed to fetch ${e}`);
-        return t.text();
+        return n.text();
       });
     }
-    function i(e) {
-      const t = /\.fa-[a-z0-9\-]+::before/g, a = [];
-      let r;
-      for (; (r = t.exec(e)) !== null; )
-        a.push(r[0].slice(1, -8));
-      return a;
+    function _(e) {
+      const n = /\.fa-[a-z0-9\-]+::before/g, i = [];
+      let a;
+      for (; (a = n.exec(e)) !== null; )
+        i.push(a[0].slice(1, -8));
+      return i;
     }
     return s("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css").then((e) => {
-      o.value = i(e), console.log(o);
+      t.value = _(e), console.log(t);
     }).catch((e) => {
       console.error(e);
-    }), (e, t) => (l(), _("section", k, [
-      n("div", I, [
-        b,
-        n("section", S, [
-          (l(!0), _(f, null, h(o.value, (a, r) => (l(), _("div", y, [
-            n("i", {
-              class: m(`fa-solid ${a}`)
-            }, null, 2)
-          ]))), 256))
+    }), (e, n) => (r(), l("section", I, [
+      o("div", y, [
+        S,
+        o("section", N, [
+          o("div", M, [
+            (r(!0), l(d, null, f(t.value, (i, a) => (r(), l(d, null, [
+              a < 10 ? (r(), l("div", P, [
+                o("i", {
+                  class: m(`fa-solid ${i}`)
+                }, null, 2)
+              ])) : w("", !0)
+            ], 64))), 256))
+          ])
         ])
       ])
     ]));
   }
-}, d = /* @__PURE__ */ v(M, [["__scopeId", "data-v-fa4b5b18"]]), p = function(c) {
-  c.component("IconPickerMagic", d);
+}, p = /* @__PURE__ */ k(V, [["__scopeId", "data-v-08858931"]]), u = function(c) {
+  c.component("IconPickerMagic", p);
 };
-typeof window < "u" && window.Vue && p(window.Vue);
-const P = {
+typeof window < "u" && window.Vue && u(window.Vue);
+const E = {
   version: "0.0.7",
-  install: p,
-  IconPickerMagic: d
+  install: u,
+  IconPickerMagic: p
   // customButton: IconPickerMagic
 };
 export {
-  d as IconPickerMagic,
-  P as default
+  p as IconPickerMagic,
+  E as default
 };
