@@ -8,6 +8,7 @@ export function useIcons() {
             title: 'Font Awesome',
             url: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css',
             icons: [],
+            classPrefix: 'fa-solid',
             regex: /\.fa-[a-z0-9\-]+::before/g,
             slice: { start: 1, end: -8 }
         },
@@ -15,6 +16,7 @@ export function useIcons() {
             title: 'Line Awesome',
             url: 'https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.css',
             icons: [],
+            classPrefix: 'la',
             regex: /\.la-[a-z0-9\-]+:before/g,
             slice: { start: 1, end: -7 }
         }
@@ -31,7 +33,7 @@ export function useIcons() {
         fetch(fontIcon.url)
             .then((response) => response.text())
             .then((cssContent) => {
-                fontIconsList.value[fontIconSlug].icons = extractIconNames(cssContent);
+                fontIconsList.value[fontIconSlug].icons = extractIconNames(cssContent, fontIcon);
             })
             .catch((error) => {
                 console.error(error);

@@ -5,7 +5,7 @@
         <input type="search" placeholder="Search icon ...">
       </section>
       <section class="select-font-icon">
-        <select>
+        <select @change="selectedFontIcon = $event.target.value">
           <option
               v-for="(icon, index) in fontIcons"
               :key="index"
@@ -16,10 +16,9 @@
       </section>
       <section class="icon-list">
         <div class="wrapper">
-          <template v-for="(icon, index) in fontIcons[activeFontIcon].icons">
+          <template v-for="(icon, index) in fontIcons[selectedFontIcon].icons">
             <div class="icon-item">
-              <!--          <i class="las la-battery-three-quarters"></i>-->
-              <i :class="`fa-solid ${icon}`"></i>
+              <i :class="`${fontIcons[selectedFontIcon].classPrefix} ${icon}`"></i>
             </div>
           </template>
         </div>
@@ -32,7 +31,7 @@
 import {ref} from "vue";
 import {useIcons} from "../composables/icons";
 
-defineProps({
+const props = defineProps({
   activeFontIcon: {
     default: 'fontawesome',
     type: String
@@ -40,6 +39,7 @@ defineProps({
 })
 
 const fontIcons = useIcons();
+let selectedFontIcon = fontIcons.value[props.activeFontIcon] ? ref(props.activeFontIcon) : 'fontawesome';
 
 console.log(fontIcons.value)
 </script>

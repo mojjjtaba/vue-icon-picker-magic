@@ -5,7 +5,7 @@ import "vue-icon-picker-magic-test/dist/style.css"
 </script>
 
 <template>
-  <IconPickerMagic/>
+  <IconPickerMagic />
 </template>
 
 <style scoped>
