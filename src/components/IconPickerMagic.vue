@@ -5,8 +5,13 @@
         <input type="search" placeholder="Search icon ...">
       </section>
       <section class="select-font-icon">
-        <select v-for="(icon, index) in fontIcons">
-          <option :value="index" v-text="index"></option>
+        <select>
+          <option
+              v-for="(icon, index) in fontIcons"
+              :key="index"
+              :value="index"
+              v-text="index"
+          ></option>
         </select>
       </section>
       <section class="icon-list">
@@ -35,8 +40,8 @@ defineProps({
 })
 
 const fontIcons = useIcons();
-console.log(fontIcons)
 
+console.log(fontIcons.value)
 </script>
 
 <style lang="scss" scoped>

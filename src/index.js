@@ -20,6 +20,5 @@ export { IconPickerMagic }
 export default {
   version: '0.0.7',
   install,
-  IconPickerMagic,
-  // customButton: IconPickerMagic
+  IconPickerMagic
 }

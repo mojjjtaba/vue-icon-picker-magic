@@ -1,41 +1,51 @@
-import { ref as h, openBlock as a, createElementBlock as l, createElementVNode as n, Fragment as u, renderList as _, unref as d, toDisplayString as m, normalizeClass as v, pushScopeId as I, popScopeId as w } from "vue";
-function g() {
-  let e = h({
+import { ref as m, openBlock as l, createElementBlock as a, createElementVNode as n, Fragment as u, renderList as _, unref as d, toDisplayString as h, normalizeClass as v, pushScopeId as w, popScopeId as g } from "vue";
+function x() {
+  let e = m({
     fontawesome: {
       title: "Font Awesome",
       url: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css",
-      icons: []
+      icons: [],
+      regex: /\.fa-[a-z0-9\-]+::before/g,
+      slice: { start: 1, end: -8 }
+    },
+    lineawesome: {
+      title: "Line Awesome",
+      url: "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.css",
+      icons: [],
+      regex: /\.la-[a-z0-9\-]+:before/g,
+      slice: { start: 1, end: -7 }
     }
   });
-  for (let o in e.value)
-    c(o);
-  function c(o) {
-    fetch(e.value[o].url).then((t) => t.text()).then((t) => {
-      e.value[o].icons = i(t);
+  for (let c in e.value)
+    s(c);
+  function s(c) {
+    let o = e.value[c];
+    fetch(o.url).then((t) => t.text()).then((t) => {
+      e.value[c].icons = i(t);
     }).catch((t) => {
       console.error(t);
     });
   }
-  function i(o) {
-    const t = /\.fa-[a-z0-9\-]+::before/g, s = [];
+  function i(c, o) {
+    const t = [];
     let r;
-    for (; (r = t.exec(o)) !== null; )
-      s.push(r[0].slice(1, -8));
-    return s;
+    for (; (r = o.regex.exec(c)) !== null; )
+      t.push(r[0].slice(o.slice.start, o.slice.end));
+    return t;
   }
   return e;
 }
-const x = (e, c) => {
+const I = (e, s) => {
   const i = e.__vccOpts || e;
-  for (const [o, t] of c)
-    i[o] = t;
+  for (const [c, o] of s)
+    i[c] = o;
   return i;
-}, k = (e) => (I("data-v-76b58540"), e = e(), w(), e), y = { class: "icon-picker-magic" }, S = { class: "wrap" }, b = /* @__PURE__ */ k(() => /* @__PURE__ */ n("section", { class: "search" }, [
+}, k = (e) => (w("data-v-7f6bf9c0"), e = e(), g(), e), y = { class: "icon-picker-magic" }, b = { class: "wrap" }, S = /* @__PURE__ */ k(() => /* @__PURE__ */ n("section", { class: "search" }, [
   /* @__PURE__ */ n("input", {
     type: "search",
     placeholder: "Search icon ..."
   })
-], -1)), F = { class: "select-font-icon" }, M = ["value", "textContent"], P = { class: "icon-list" }, C = { class: "wrapper" }, N = { class: "icon-item" }, V = {
+], -1)), F = { class: "select-font-icon" }, M = ["value", "textContent"], P = { class: "icon-list" }, z = { class: "wrapper" }, C = { class: "icon-item" }, L = {
   __name: "IconPickerMagic",
   props: {
     activeFontIcon: {
@@ -44,23 +54,24 @@ const x = (e, c) => {
     }
   },
   setup(e) {
-    const c = g();
-    return console.log(c), (i, o) => (a(), l("section", y, [
-      n("div", S, [
-        b,
+    const s = x();
+    return console.log(s.value), (i, c) => (l(), a("section", y, [
+      n("div", b, [
+        S,
         n("section", F, [
-          (a(!0), l(u, null, _(d(c), (t, s) => (a(), l("select", null, [
-            n("option", {
-              value: s,
-              textContent: m(s)
-            }, null, 8, M)
-          ]))), 256))
+          n("select", null, [
+            (l(!0), a(u, null, _(d(s), (o, t) => (l(), a("option", {
+              key: t,
+              value: t,
+              textContent: h(t)
+            }, null, 8, M))), 128))
+          ])
         ]),
         n("section", P, [
-          n("div", C, [
-            (a(!0), l(u, null, _(d(c)[e.activeFontIcon].icons, (t, s) => (a(), l("div", N, [
+          n("div", z, [
+            (l(!0), a(u, null, _(d(s)[e.activeFontIcon].icons, (o, t) => (l(), a("div", C, [
               n("i", {
-                class: v(`fa-solid ${t}`)
+                class: v(`fa-solid ${o}`)
               }, null, 2)
             ]))), 256))
           ])
@@ -68,17 +79,16 @@ const x = (e, c) => {
       ])
     ]));
   }
-}, p = /* @__PURE__ */ x(V, [["__scopeId", "data-v-76b58540"]]), f = function(e) {
-  e.component("IconPickerMagic", p);
+}, f = /* @__PURE__ */ I(L, [["__scopeId", "data-v-7f6bf9c0"]]), p = function(e) {
+  e.component("IconPickerMagic", f);
 };
-typeof window < "u" && window.Vue && f(window.Vue);
-const z = {
+typeof window < "u" && window.Vue && p(window.Vue);
+const V = {
   version: "0.0.7",
-  install: f,
-  IconPickerMagic: p
-  // customButton: IconPickerMagic
+  install: p,
+  IconPickerMagic: f
 };
 export {
-  p as IconPickerMagic,
-  z as default
+  f as IconPickerMagic,
+  V as default
 };
