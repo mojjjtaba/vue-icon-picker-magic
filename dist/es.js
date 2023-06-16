@@ -1,4 +1,4 @@
-import { ref as f, openBlock as l, createElementBlock as r, createElementVNode as a, isRef as v, Fragment as _, renderList as p, unref as u, toDisplayString as g, normalizeClass as w, pushScopeId as x, popScopeId as I } from "vue";
+import { ref as f, openBlock as l, createElementBlock as r, createElementVNode as a, isRef as m, Fragment as d, renderList as p, unref as u, toDisplayString as g, normalizeClass as I, pushScopeId as w, popScopeId as x } from "vue";
 function k() {
   let e = f({
     fontawesome: {
@@ -8,46 +8,38 @@ function k() {
       classPrefix: "fa-solid",
       regex: /\.fa-[a-z0-9\-]+::before/g,
       slice: { start: 1, end: -8 }
-    },
-    lineawesome: {
-      title: "Line Awesome",
-      url: "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.css",
-      icons: [],
-      classPrefix: "la",
-      regex: /\.la-[a-z0-9\-]+:before/g,
-      slice: { start: 1, end: -7 }
     }
   });
   for (let t in e.value)
     i(t);
   function i(t) {
-    let n = e.value[t];
-    fetch(n.url).then((o) => o.text()).then((o) => {
-      e.value[t].icons = s(o, n);
+    let c = e.value[t];
+    fetch(c.url).then((o) => o.text()).then((o) => {
+      e.value[t].icons = n(o, c);
     }).catch((o) => {
       console.error(o);
     });
   }
-  function s(t, n) {
+  function n(t, c) {
     const o = [];
-    let c;
-    for (; (c = n.regex.exec(t)) !== null; )
-      o.push(c[0].slice(n.slice.start, n.slice.end));
+    let s;
+    for (; (s = c.regex.exec(t)) !== null; )
+      o.push(s[0].slice(c.slice.start, c.slice.end));
     return o;
   }
   return e;
 }
 const y = (e, i) => {
-  const s = e.__vccOpts || e;
-  for (const [t, n] of i)
-    s[t] = n;
-  return s;
-}, F = (e) => (x("data-v-8800a6ba"), e = e(), I(), e), P = { class: "icon-picker-magic" }, b = { class: "wrap" }, S = /* @__PURE__ */ F(() => /* @__PURE__ */ a("section", { class: "search" }, [
+  const n = e.__vccOpts || e;
+  for (const [t, c] of i)
+    n[t] = c;
+  return n;
+}, F = (e) => (w("data-v-8800a6ba"), e = e(), x(), e), P = { class: "icon-picker-magic" }, S = { class: "wrap" }, b = /* @__PURE__ */ F(() => /* @__PURE__ */ a("section", { class: "search" }, [
   /* @__PURE__ */ a("input", {
     type: "search",
     placeholder: "Search icon ..."
   })
-], -1)), C = { class: "select-font-icon" }, M = ["value", "textContent"], z = { class: "icon-list" }, L = { class: "wrapper" }, N = { class: "icon-item" }, V = {
+], -1)), C = { class: "select-font-icon" }, M = ["value", "textContent"], N = { class: "icon-list" }, V = { class: "wrapper" }, j = { class: "icon-item" }, z = {
   __name: "IconPickerMagic",
   props: {
     activeFontIcon: {
@@ -56,27 +48,27 @@ const y = (e, i) => {
     }
   },
   setup(e) {
-    const i = e, s = k();
-    let t = s.value[i.activeFontIcon] ? f(i.activeFontIcon) : "fontawesome";
-    return console.log(s.value), (n, o) => (l(), r("section", P, [
-      a("div", b, [
-        S,
+    const i = e, n = k();
+    let t = n.value[i.activeFontIcon] ? f(i.activeFontIcon) : "fontawesome";
+    return console.log(n.value), (c, o) => (l(), r("section", P, [
+      a("div", S, [
+        b,
         a("section", C, [
           a("select", {
-            onChange: o[0] || (o[0] = (c) => v(t) ? t.value = c.target.value : t = c.target.value)
+            onChange: o[0] || (o[0] = (s) => m(t) ? t.value = s.target.value : t = s.target.value)
           }, [
-            (l(!0), r(_, null, p(u(s), (c, d) => (l(), r("option", {
-              key: d,
-              value: d,
-              textContent: g(d)
+            (l(!0), r(d, null, p(u(n), (s, _) => (l(), r("option", {
+              key: _,
+              value: _,
+              textContent: g(_)
             }, null, 8, M))), 128))
           ], 32)
         ]),
-        a("section", z, [
-          a("div", L, [
-            (l(!0), r(_, null, p(u(s)[u(t)].icons, (c, d) => (l(), r("div", N, [
+        a("section", N, [
+          a("div", V, [
+            (l(!0), r(d, null, p(u(n)[u(t)].icons, (s, _) => (l(), r("div", j, [
               a("i", {
-                class: w(`${u(s)[u(t)].classPrefix} ${c}`)
+                class: I(`${u(n)[u(t)].classPrefix} ${s}`)
               }, null, 2)
             ]))), 256))
           ])
@@ -84,16 +76,16 @@ const y = (e, i) => {
       ])
     ]));
   }
-}, m = /* @__PURE__ */ y(V, [["__scopeId", "data-v-8800a6ba"]]), h = function(e) {
-  e.component("IconPickerMagic", m);
+}, h = /* @__PURE__ */ y(z, [["__scopeId", "data-v-8800a6ba"]]), v = function(e) {
+  e.component("IconPickerMagic", h);
 };
-typeof window < "u" && window.Vue && h(window.Vue);
-const A = {
+typeof window < "u" && window.Vue && v(window.Vue);
+const E = {
   version: "0.0.7",
-  install: h,
-  IconPickerMagic: m
+  install: v,
+  IconPickerMagic: h
 };
 export {
-  m as IconPickerMagic,
-  A as default
+  h as IconPickerMagic,
+  E as default
 };
