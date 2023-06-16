@@ -2,21 +2,11 @@
   <section class="icon-picker-magic">
     <div class="wrap">
       <section class="search">
-        <input type="search" placeholder="Search icon ...">
-      </section>
-      <section class="select-font-icon">
-        <select @change="selectedFontIcon = $event.target.value">
-          <option
-              v-for="(icon, index) in fontIcons"
-              :key="index"
-              :value="index"
-              v-text="index"
-          ></option>
-        </select>
+        <input type="search" placeholder="Search icon ..." v-model="keyword">
       </section>
       <section class="icon-list">
         <div class="wrapper">
-          <template v-for="(icon, index) in fontIcons[selectedFontIcon].icons">
+          <template v-for="(icon, index) in fontIconsFiltered">
             <div class="icon-item">
               <i :class="`${fontIcons[selectedFontIcon].classPrefix} ${icon}`"></i>
             </div>
@@ -28,7 +18,7 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {computed, ref, unref} from "vue";
 import {useIcons} from "../composables/icons";
 
 const props = defineProps({
@@ -40,6 +30,17 @@ const props = defineProps({
 
 const fontIcons = useIcons();
 let selectedFontIcon = fontIcons.value[props.activeFontIcon] ? ref(props.activeFontIcon) : 'fontawesome';
+let keyword = ref(null);
+
+const fontIconsFiltered = computed(() => {
+  let icons = fontIcons.value[unref(selectedFontIcon)].icons
+
+  if(keyword.value) {
+    return icons.filter((icon) => icon.indexOf(keyword.value) > -1);
+  } else {
+    return icons;
+  }
+})
 
 console.log(fontIcons.value)
 </script>
@@ -64,14 +65,14 @@ console.log(fontIcons.value)
         padding: 10px 14px;
         outline: none;
         border-radius: 6px;
-        border: 1px solid #aaa;
+        border: 3px solid #aaaaaa59;
         font-size: 18px;
         width: 100%;
+        line-height: 20px;
         transition: all 0.3s;
 
         &:focus {
           background: rgba(0, 0, 0, .03);
-          border: 1px solid #ccc;
         }
       }
     }
@@ -96,6 +97,7 @@ console.log(fontIcons.value)
       text-align: left;
       //margin-right: -4px;
       margin-left: -4px;
+      width: 304px;
       height: 300px;
       overflow-y: scroll;
 
